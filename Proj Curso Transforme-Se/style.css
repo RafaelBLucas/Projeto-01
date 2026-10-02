@@ -1,0 +1,317 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ 
+body {
+  font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+  background-color: #121212;
+  color: #f2f2f2;
+  line-height: 1.6;
+}
+ 
+img {
+  max-width: 100%;
+  display: block;
+}
+ 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+ 
+ul {
+  list-style: none;
+}
+ 
+.container {
+  width: min(1200px, 90%);
+  margin: 0 auto;
+}
+ 
+.eyebrow {
+  display: inline-block;
+  color: #e63946;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+ 
+.highlight {
+  color: #e63946;
+}
+.btn {
+  display: inline-block;
+  background-color: #e63946;
+  color: #ffffff;
+  font-weight: 700;
+  padding: 0.9rem 1.8rem;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+ 
+.btn:hover {
+  background-color: #ff5a5f;
+  transform: translateY(-3px);
+}
+.header {
+  background-color: #0b0b0b;
+  border-bottom: 1px solid #1f1f1f;
+  padding: 1.2rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+ 
+.header__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+ 
+.logo {
+  color: #e63946;
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+ 
+.nav__list {
+  display: flex;
+  gap: 2rem;
+}
+ 
+.nav__list a {
+  font-weight: 500;
+  position: relative;
+  padding-bottom: 4px;
+  transition: color 0.3s ease;
+}
+ 
+.nav__list a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #e63946;
+  transition: width 0.3s ease;
+}
+ 
+.nav__list a:hover {
+  color: #e63946;
+}
+ 
+.nav__list a:hover::after {
+  width: 100%;
+}
+.hero {
+  position: relative;
+  min-height: 640px;
+  display: flex;
+  align-items: center;
+  padding: 5rem 0;
+  background-image: url("/images/hero-car.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  isolation: isolate;
+}
+ 
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(10, 10, 10, 0.95) 0%,
+    rgba(10, 10, 10, 0.75) 45%,
+    rgba(10, 10, 10, 0.35) 100%
+  );
+  z-index: -1;
+}
+ 
+.hero__wrapper {
+  display: block;
+}
+ 
+.hero__text {
+  max-width: 620px;
+}
+ 
+.hero__title {
+  font-size: 2.75rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 1.2rem;
+}
+ 
+.hero__description {
+  color: #cfcfcf;
+  margin-bottom: 2rem;
+  max-width: 42ch;
+}
+
+section {
+  padding: 5rem 0;
+}
+ 
+.section__heading {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+ 
+.section__heading h2 {
+  font-size: 2.2rem;
+  font-weight: 800;
+}
+ .services__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+ 
+.card {
+  background-color: #1a1a1a;
+  border: 1px solid #262626;
+  border-radius: 10px;
+  padding: 2rem;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+ 
+.card:hover {
+  transform: translateY(-6px);
+  border-color: #e63946;
+}
+ 
+.card__icon {
+  font-size: 1.8rem;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+ 
+.card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.6rem;
+}
+ 
+.card p {
+  color: #cfcfcf;
+  margin-bottom: 1rem;
+}
+ 
+.link {
+  color: #e63946;
+  font-weight: 600;
+  transition: opacity 0.3s ease;
+}
+ 
+.link:hover {
+  opacity: 0.7;
+}
+.about {
+  background-color: #0b0b0b;
+}
+ 
+.about__wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+ 
+.about__image img {
+  border-radius: 10px;
+}
+ 
+.about__text h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 1.2rem;
+}
+ 
+.about__text p {
+  color: #cfcfcf;
+  margin-bottom: 1.2rem;
+}
+ 
+.about__text .btn {
+  margin-top: 0.5rem;
+}
+.contact {
+  text-align: center;
+}
+ 
+.contact h2 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 0.8rem;
+}
+ 
+.contact p {
+  color: #cfcfcf;
+  margin-bottom: 2rem;
+}
+ 
+.footer {
+  background-color: #0b0b0b;
+  border-top: 1px solid #1f1f1f;
+  padding: 2.5rem 0;
+  text-align: center;
+}
+ 
+.footer__logo {
+  color: #e63946;
+  font-weight: 800;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+ 
+.footer__text {
+  color: #cfcfcf;
+  font-size: 0.9rem;
+}
+ 
+.footer__copy {
+  color: #808080;
+  font-size: 0.85rem;
+  margin-top: 0.3rem;
+}
+@media (max-width: 768px) {
+  .about__wrapper {
+    grid-template-columns: 1fr;
+  }
+ 
+  .hero {
+    min-height: 520px;
+  }
+ 
+  .hero__overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(10, 10, 10, 0.6) 0%,
+      rgba(10, 10, 10, 0.9) 100%
+    );
+  }
+ 
+  .services__grid {
+    grid-template-columns: 1fr;
+  }
+ 
+  .header__wrapper {
+    flex-direction: column;
+    gap: 1rem;
+  }
+ 
+  .nav__list {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+ 
+  .hero__title {
+    font-size: 2rem;
+  }
+}

@@ -1,0 +1,196 @@
+/* RESET E BÁSICO */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #f9fbf9;
+  color: #2d3748;
+  line-height: 1.6;
+}
+
+/* HEADER & NAVBAR */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 5%;
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #2f855a;
+}
+
+.logo-img {
+  width: 90px;
+  height: 60px;
+}
+
+.navbar a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #4a5568;
+  font-weight: 600;
+  transition: color 0.3s;
+  text-decoration: none;
+}
+
+.navbar a:hover {
+  color: #2f855a;
+  text-decoration: underline;
+}
+
+/* HERO SECTION */
+.hero-section {
+  background: linear-gradient(135deg, #2f855a 0%, #38a169 50%, #ecc94b 100%);
+  color: white;
+  padding: 4rem 5%;
+  text-align: center;
+}
+
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.hero-content p {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.highlight-text {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #fff5f5;
+}
+
+.btn-primary {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 12px 30px;
+  background-color: #dd6b20;
+  color: white;
+  text-decoration: none;
+  border-radius: 25px;
+  font-weight: bold;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.btn-primary:hover {
+  background-color: #c05621;
+  transform: translateY(-2px);
+}
+
+/* CARDÁPIO SECCIÓN */
+.menu-section {
+  padding: 4rem 5%;
+  text-align: center;
+}
+
+.menu-section h2 {
+  font-size: 2rem;
+  color: #2f855a;
+}
+
+.subtitle {
+  color: #718096;
+  margin-bottom: 2rem;
+}
+
+.card-grid {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  width: 300px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  border: 1px solid #e2e8f0;
+  position: relative;
+  text-align: left;
+}
+
+.card-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background-color: #c6f6d5;
+  color: #22543d;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.card h3 {
+  margin-bottom: 0.5rem;
+  color: #2d3748;
+}
+
+.card p {
+  font-size: 0.95rem;
+  color: #4a5568;
+  margin-bottom: 1rem;
+}
+
+.price {
+  display: block;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #2f855a;
+  margin-bottom: 1rem;
+}
+
+.btn-card {
+  width: 100%;
+  padding: 10px;
+  background-color: #2f855a;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-card:hover {
+  background-color: #276749;
+}
+
+/* RODAPÉ */
+.footer {
+  background-color: #1a202c;
+  color: white;
+  padding: 2rem 5%;
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.footer a {
+  color: #63b3ed;
+  text-decoration: none;
+}

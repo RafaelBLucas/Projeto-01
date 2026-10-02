@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nébula — livraria de ficção científica e fantasia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --night: #171528;
+    --night-2: #241f3d;
+    --violet: #382b5c;
+    --paper: #F1ECDF;
+    --paper-dim: #C9C3B2;
+    --gold: #C9A24B;
+    --gold-soft: #E4C97A;
+    --teal: #6FA8A0;
+    --radius: 3px;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    background: var(--night);
+    color: var(--paper);
+    font-family: 'Work Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, .display{
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  a { color: inherit; }
+
+  .wrap{
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* ---------- header ---------- */
+
+  header{
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: rgba(23,21,40,0.86);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid rgba(241,236,223,0.08);
+  }
+
+  .nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding: 20px 32px;
+    max-width: 1160px;
+    margin: 0 auto;
+  }
+
+  .brand{
+    font-family:'Fraunces', serif;
+    font-size: 1.4rem;
+    letter-spacing: 0.02em;
+  }
+
+  .brand em{ color: var(--gold-soft); font-style: normal; }
+
+  .nav-links{
+    display:flex;
+    gap: 28px;
+    font-size: 0.95rem;
+  }
+
+  .nav-links a{
+    text-decoration:none;
+    color: var(--paper-dim);
+    transition: color .2s ease;
+  }
+  .nav-links a:hover, .nav-links a:focus-visible{ color: var(--gold-soft); }
+
+  /* ---------- hero ---------- */
+
+  .hero{
+    position: relative;
+    overflow: hidden;
+    padding: 90px 0 70px;
+  }
+
+  .hero .wrap{
+    display:grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 40px;
+    align-items:center;
+  }
+
+  .hero h1{
+    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    line-height: 1.12;
+    max-width: 11ch;
+  }
+
+  .hero p.lede{
+    margin-top: 22px;
+    max-width: 46ch;
+    color: var(--paper-dim);
+    font-size: 1.08rem;
+  }
+
+  .hero-actions{
+    margin-top: 34px;
+    display:flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .btn{
+    display:inline-block;
+    padding: 13px 26px;
+    border-radius: var(--radius);
+    font-size: 0.95rem;
+    text-decoration:none;
+    cursor:pointer;
+    border: 1px solid transparent;
+    font-family:'Work Sans', sans-serif;
+    transition: transform .15s ease, background .2s ease, border-color .2s ease;
+  }
+
+  .btn-primary{
+    background: var(--gold-soft);
+    color: var(--night);
+  }
+  .btn-primary:hover{ transform: translateY(-1px); background: var(--gold); }
+
+  .btn-ghost{
+    border-color: rgba(241,236,223,0.25);
+    color: var(--paper);
+    background: transparent;
+  }
+  .btn-ghost:hover{ border-color: var(--gold-soft); color: var(--gold-soft); }
+
+  .orbit-field{
+    position:relative;
+    height: 380px;
+  }
+  .orbit-field svg{ width:100%; height:100%; }
+
+  .star{
+    fill: var(--paper);
+    opacity: 0;
+    animation: twinkle 3.6s ease-in-out infinite;
+  }
+  @keyframes twinkle{
+    0%, 100% { opacity: 0.15; }
+    50% { opacity: 0.95; }
+  }
+  .orbit-line{
+    fill:none;
+    stroke: rgba(201,162,75,0.35);
+    stroke-width: 1;
+    stroke-dasharray: 4 6;
+  }
+  .orbit-node{
+    fill: var(--gold-soft);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .star{ animation: none; opacity: 0.6; }
+  }
+
+  /* ---------- section shell ---------- */
+
+  section{ padding: 80px 0; }
+
+  .section-head{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    gap: 24px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+
+  .section-head h2{
+    font-size: clamp(1.7rem, 3vw, 2.3rem);
+  }
+
+  .section-head p{
+    color: var(--paper-dim);
+    max-width: 42ch;
+    margin: 10px 0 0;
+  }
+
+  /* ---------- genre filters ---------- */
+
+  .filters{
+    display:flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .chip{
+    border: 1px solid rgba(241,236,223,0.22);
+    background: transparent;
+    color: var(--paper-dim);
+    padding: 9px 18px;
+    border-radius: 999px;
+    font-size: 0.88rem;
+    cursor:pointer;
+    font-family:'Work Sans', sans-serif;
+    transition: all .18s ease;
+  }
+  .chip:hover{ border-color: var(--gold-soft); color: var(--paper); }
+  .chip[aria-pressed="true"]{
+    background: var(--gold-soft);
+    border-color: var(--gold-soft);
+    color: var(--night);
+  }
+
+  /* ---------- shelf ---------- */
+
+  .shelf-wrap{ position: relative; }
+
+  .shelf{
+    display:flex;
+    gap: 22px;
+    overflow-x: auto;
+    padding: 6px 4px 26px;
+    scroll-snap-type: x proximity;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(201,162,75,0.5) transparent;
+  }
+
+  .book{
+    scroll-snap-align: start;
+    flex: 0 0 168px;
+    display:flex;
+    flex-direction:column;
+    gap: 12px;
+    transition: opacity .25s ease, transform .25s ease;
+  }
+
+  .book.is-hidden{
+    display:none;
+  }
+
+  .cover{
+    height: 240px;
+    border-radius: 2px;
+    position: relative;
+    box-shadow: 0 14px 26px rgba(0,0,0,0.35);
+    display:flex;
+    align-items:flex-end;
+    padding: 14px;
+    transition: transform .2s ease;
+  }
+  .book:hover .cover{ transform: translateY(-6px); }
+
+  .cover .spine-title{
+    font-family:'Fraunces', serif;
+    font-size: 1.05rem;
+    line-height: 1.2;
+    color: rgba(23,21,40,0.92);
+  }
+
+  .book .author{
+    font-size: 0.82rem;
+    color: var(--paper-dim);
+  }
+  .book .genre-tag{
+    font-size: 0.74rem;
+    color: var(--teal);
+  }
+
+  .shelf-controls{
+    position:absolute;
+    top: -58px;
+    right: 4px;
+    display:flex;
+    gap: 8px;
+  }
+  .shelf-controls button{
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(241,236,223,0.25);
+    background: transparent;
+    color: var(--paper);
+    cursor:pointer;
+    font-size: 1rem;
+  }
+  .shelf-controls button:hover{ border-color: var(--gold-soft); color: var(--gold-soft); }
+
+  /* ---------- about ---------- */
+
+  .about{
+    background: var(--night-2);
+  }
+  .about .wrap{
+    display:grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 56px;
+    align-items:start;
+  }
+  .about blockquote{
+    margin: 0;
+    font-family:'Fraunces', serif;
+    font-size: clamp(1.3rem, 2.4vw, 1.7rem);
+    line-height: 1.4;
+    color: var(--gold-soft);
+    border-left: 2px solid rgba(201,162,75,0.5);
+    padding-left: 22px;
+  }
+  .about-facts{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 26px;
+    margin-top: 34px;
+  }
+  .about-facts div strong{
+    display:block;
+    font-family:'Fraunces', serif;
+    font-size: 1.7rem;
+    color: var(--paper);
+  }
+  .about-facts div span{
+    color: var(--paper-dim);
+    font-size: 0.88rem;
+  }
+  .about p{ color: var(--paper-dim); }
+
+  /* ---------- newsletter ---------- */
+
+  .signup{
+    background: linear-gradient(160deg, var(--violet), var(--night));
+    border-radius: 4px;
+    padding: 56px;
+  }
+  .signup .wrap{ padding: 0; max-width: none; }
+  .signup-inner{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items:center;
+  }
+  .signup h2{ font-size: clamp(1.6rem, 3vw, 2.1rem); max-width: 14ch; }
+  .signup p{ color: var(--paper-dim); margin-top: 12px; max-width: 40ch; }
+
+  form.signup-form{
+    display:flex;
+    flex-direction:column;
+    gap: 14px;
+  }
+  .field-row{
+    display:flex;
+    gap: 10px;
+  }
+  input[type="email"]{
+    flex:1;
+    padding: 13px 16px;
+    border-radius: var(--radius);
+    border: 1px solid rgba(241,236,223,0.25);
+    background: rgba(23,21,40,0.5);
+    color: var(--paper);
+    font-family:'Work Sans', sans-serif;
+    font-size: 0.95rem;
+  }
+  input[type="email"]::placeholder{ color: var(--paper-dim); }
+  input[type="email"]:focus-visible, .chip:focus-visible, .btn:focus-visible, .shelf-controls button:focus-visible{
+    outline: 2px solid var(--teal);
+    outline-offset: 2px;
+  }
+
+  .form-msg{
+    font-size: 0.86rem;
+    min-height: 1.2em;
+  }
+  .form-msg.ok{ color: var(--teal); }
+  .form-msg.err{ color: #E08B7A; }
+
+  /* ---------- footer ---------- */
+
+  footer{
+    padding: 40px 0 50px;
+    color: var(--paper-dim);
+    font-size: 0.85rem;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  @media (max-width: 860px){
+    .hero .wrap{ grid-template-columns: 1fr; }
+    .orbit-field{ height: 260px; }
+    .about .wrap{ grid-template-columns: 1fr; }
+    .signup-inner{ grid-template-columns: 1fr; }
+    .field-row{ flex-direction:column; }
+    .signup{ padding: 36px 24px; }
+    .nav-links{ display:none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="brand">Nébula<em>.</em></div>
+    <nav class="nav-links">
+      <a href="#estante">Estante</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#assinar">Órbita</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Livros que reorganizam a gravidade da sua estante.</h1>
+      <p class="lede">Uma livraria de bairro dedicada a ficção científica, fantasia e tudo que existe entre as duas coisas. Curadoria pequena, conversas longas, café sempre pronto.</p>
+      <div class="hero-actions">
+        <a href="#estante" class="btn btn-primary">Ver a estante</a>
+        <a href="#sobre" class="btn btn-ghost">Conhecer a loja</a>
+      </div>
+    </div>
+    <div class="orbit-field" aria-hidden="true">
+      <svg viewBox="0 0 400 380">
+        <ellipse class="orbit-line" cx="200" cy="190" rx="160" ry="70" transform="rotate(-12 200 190)"/>
+        <ellipse class="orbit-line" cx="200" cy="190" rx="110" ry="140" transform="rotate(8 200 190)"/>
+        <circle class="orbit-node" cx="200" cy="190" r="10"/>
+        <circle class="orbit-node" cx="340" cy="150" r="4"/>
+        <circle class="orbit-node" cx="70" cy="235" r="5"/>
+        <g id="starfield"></g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section id="estante">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <h2>A estante desta semana</h2>
+        <p>Uma seleção pequena e trocada com frequência — não um catálogo inteiro.</p>
+      </div>
+      <div class="filters" id="filters">
+        <button class="chip" aria-pressed="true" data-genre="todos">Todos</button>
+        <button class="chip" aria-pressed="false" data-genre="ficcao">Ficção científica</button>
+        <button class="chip" aria-pressed="false" data-genre="fantasia">Fantasia</button>
+        <button class="chip" aria-pressed="false" data-genre="distopia">Distopia</button>
+      </div>
+    </div>
+
+    <div class="shelf-wrap">
+      <div class="shelf-controls">
+        <button id="shelf-prev" aria-label="Rolar para a esquerda">&#8592;</button>
+        <button id="shelf-next" aria-label="Rolar para a direita">&#8594;</button>
+      </div>
+      <div class="shelf" id="shelf"></div>
+    </div>
+  </div>
+</section>
+
+<section id="sobre" class="about">
+  <div class="wrap">
+    <blockquote>“Toda boa livraria devia parecer um lugar onde ainda não se sabe tudo o que vai acontecer.”</blockquote>
+    <div>
+      <p>A Nébula nasceu de uma estante de apartamento que ficou grande demais. Hoje ocupa uma esquina só, com iluminação baixa, poltronas gastas e uma seleção pensada por quem lê o gênero há mais de vinte anos.</p>
+      <p>Não vendemos tudo. Vendemos o que vale a pena interromper o que você está fazendo para começar.</p>
+      <div class="about-facts">
+        <div><strong>7</strong><span>anos de loja</span></div>
+        <div><strong>1.200+</strong><span>títulos em giro constante</span></div>
+        <div><strong>3</strong><span>clubes de leitura por mês</span></div>
+        <div><strong>1</strong><span>gato residente, o Kepler</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="assinar">
+  <div class="wrap">
+    <div class="signup">
+      <div class="signup-inner">
+        <div>
+          <h2>Entre na órbita da Nébula</h2>
+          <p>Um e-mail quinzenal com as chegadas da semana, um conto curto e o que anda sendo lido no balcão.</p>
+        </div>
+        <div>
+          <form class="signup-form" id="signup-form" novalidate>
+            <div class="field-row">
+              <input type="email" id="signup-email" placeholder="seu@email.com" required>
+              <button type="submit" class="btn btn-primary">Assinar</button>
+            </div>
+            <div class="form-msg" id="signup-msg" role="status"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex; justify-content:space-between; width:100%; flex-wrap:wrap; gap:12px;">
+    <span>Nébula — livraria independente</span>
+    <span>Rua das Órbitas, 42 · terça a domingo, 11h–20h</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+
+  // ---- starfield ----
+  var starfield = document.getElementById('starfield');
+  var ns = 'http://www.w3.org/2000/svg';
+  for (var i = 0; i < 26; i++) {
+    var s = document.createElementNS(ns, 'circle');
+    var x = Math.random() * 400;
+    var y = Math.random() * 380;
+    var r = Math.random() * 1.4 + 0.6;
+    s.setAttribute('cx', x);
+    s.setAttribute('cy', y);
+    s.setAttribute('r', r);
+    s.setAttribute('class', 'star');
+    s.style.animationDelay = (Math.random() * 3.6).toFixed(2) + 's';
+    starfield.appendChild(s);
+  }
+
+  // ---- book data ----
+  var palette = ['#3B3162', '#4A3B27', '#2F4A46', '#5C3A46', '#33405C', '#4A3350'];
+  var books = [
+    { title: 'O Peso das Marés', author: 'Iracema Volt', genre: 'ficcao', label: 'Ficção científica' },
+    { title: 'Sete Chaves para Nínive', author: 'Doran Fell', genre: 'fantasia', label: 'Fantasia' },
+    { title: 'Arquivo 33', author: 'C. Andrade Reis', genre: 'distopia', label: 'Distopia' },
+    { title: 'A Última Colheita Solar', author: 'Mireille Tanaka', genre: 'ficcao', label: 'Ficção científica' },
+    { title: 'O Jardim de Vidro Negro', author: 'Selin Marques', genre: 'fantasia', label: 'Fantasia' },
+    { title: 'Cidade sem Domingo', author: 'Yuri Bastos', genre: 'distopia', label: 'Distopia' },
+    { title: 'Constelação Menor', author: 'Nadia Prokop', genre: 'ficcao', label: 'Ficção científica' },
+    { title: 'A Rainha de Ferrugem', author: 'Bela Duarte', genre: 'fantasia', label: 'Fantasia' }
+  ];
+
+  var shelf = document.getElementById('shelf');
+  books.forEach(function(b, idx){
+    var el = document.createElement('div');
+    el.className = 'book';
+    el.dataset.genre = b.genre;
+    el.innerHTML =
+      '<div class="cover" style="background:' + palette[idx % palette.length] + '">' +
+        '<div class="spine-title" style="color:#F1ECDF">' + b.title + '</div>' +
+      '</div>' +
+      '<div class="author">' + b.author + '</div>' +
+      '<div class="genre-tag">' + b.label + '</div>';
+    shelf.appendChild(el);
+  });
+
+  // ---- filters ----
+  var chips = document.querySelectorAll('.chip');
+  chips.forEach(function(chip){
+    chip.addEventListener('click', function(){
+      chips.forEach(function(c){ c.setAttribute('aria-pressed', 'false'); });
+      chip.setAttribute('aria-pressed', 'true');
+      var genre = chip.dataset.genre;
+      document.querySelectorAll('.book').forEach(function(book){
+        var show = genre === 'todos' || book.dataset.genre === genre;
+        book.classList.toggle('is-hidden', !show);
+      });
+    });
+  });
+
+  // ---- shelf scroll controls ----
+  document.getElementById('shelf-prev').addEventListener('click', function(){
+    shelf.scrollBy({ left: -320, behavior: 'smooth' });
+  });
+  document.getElementById('shelf-next').addEventListener('click', function(){
+    shelf.scrollBy({ left: 320, behavior: 'smooth' });
+  });
+
+  // ---- newsletter form ----
+  var form = document.getElementById('signup-form');
+  var msg = document.getElementById('signup-msg');
+  var emailInput = document.getElementById('signup-email');
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var value = emailInput.value.trim();
+    var valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+    if (!valid) {
+      msg.textContent = 'Isso não parece um e-mail válido — confira e tente de novo.';
+      msg.className = 'form-msg err';
+      emailInput.focus();
+      return;
+    }
+    msg.textContent = 'Pronto — o próximo envio chega em breve em ' + value + '.';
+    msg.className = 'form-msg ok';
+    form.reset();
+  });
+
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1º function</title>
+</head>
+<body>
+<h1>Javascript functions</h1>
+    <script src="/js/function.js"></script>
+    <p id="demo"></p>
+    <script>
+        function sayhello() {
+            return "Hello world";
+        }
+
+        let mensagem = sayhello();
+        document.getElementById("demo").innerHTML = mensagem;
+    </script>
+    <!--<script>
+        function mostrarmensagem() {
+            alert("Bem vindo");
+        }
+
+        mostrarmensagem();
+        mostrarmensagem();
+        mostrarmensagem();
+    </script>--> 
+
+    <!--<script>
+        function saudacao(nome) {
+            alert("Olá," + nome);
+        }
+
+        let nome = prompt("Digite seu nome");
+        saudacao(nome);
+    </script>-->
+
+    <!--<script>
+        function apresentacao(nome, idade){
+            alert("nome:" + nome);
+            alert("idade:" + idade);
+        }
+
+        let nome = prompt("Digite seu nome:");
+        let idade = Number(prompt("Digite sua idade:"));
+
+        apresentacao(nome, idade)
+    </script>-->
+
+    <!--<script>
+        function calcularmedia(nota1, nota2, nota3, nota4) {
+            let media = (nota1 + nota2+ nota3 + nota4)/4;
+            alert("A media é:" + media);
+        }
+
+        let nota1 = Number(prompt("Digite a primeira nota:"));
+        let nota2 = Number(prompt("Digite a segunda nota:"));
+        let nota3 = Number(prompt("Digite a terceira nota:"));
+        let nota4 = Number(prompt("Digite a quarta nota:"));
+
+        calcularmedia(nota1, nota2, nota3, nota4);
+    </script>-->
+
+    <!--<script>
+        function calculardobro(numero){
+            alert("O dobro de:  " + numero + "é: " + (numero * 2));
+        }
+
+        let numero = Number(prompt("Digite um número:"));
+
+        calculardobro(numero);
+    </script>-->
+
+    <script>
+        function calculardesconto(preco, desconto){
+            let valordesconto = preco * (desconto/100);
+            let precofinal = preco - valordesconto;
+
+            
+            alert("Subtotal: R$" + preco + 
+                "\n Desconto: " + desconto + "%" +
+                "\n total: R$" + precofinal
+            );
+        }
+
+
+        let valordesconto = Number(prompt("Digite o valor do desconto:"));
+        let precofinal = Number(prompt("Digite o preço final:"));
+
+        calculardesconto(precofinal, valordesconto);
+        
+    </script>
+
+</body>
+</html>

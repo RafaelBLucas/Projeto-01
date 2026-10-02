@@ -1,0 +1,64 @@
+/* PÁGINA SOBRE NÓS */
+.about-section {
+  padding: 4rem 5%;
+  background-color: #ffffff;
+}
+
+.about-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.about-text {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.about-text h2 {
+  font-size: 2rem;
+  color: #2f855a;
+  margin-bottom: 1rem;
+}
+
+.about-text p {
+  font-size: 1.1rem;
+  color: #4a5568;
+  margin-bottom: 1rem;
+  line-height: 1.8;
+}
+
+/* CARDS DE VALORES */
+.values-grid {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.value-card {
+  background-color: #f9fbf9;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  flex: 1;
+  min-width: 250px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.03);
+}
+
+.value-card .icon {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 0.8rem;
+}
+
+.value-card h3 {
+  color: #2d3748;
+  margin-bottom: 0.5rem;
+}
+
+.value-card p {
+  color: #718096;
+  font-size: 0.95rem;
+}

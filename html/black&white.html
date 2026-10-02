@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body id="container" style="background-color: white; color: black">
+    <div style="display: flex; justify-content: space-between; margin: 50px">
+      <h1 id="texto">Estamos no modo claro</h1>
+
+      <button onclick="AlterarTema()">
+        <img
+          id="icon_tema"
+          src="/img/moon.png"
+          alt="the moon"
+          width="120"
+          height="100"
+        />
+      </button>
+    </div>
+
+    <script>
+      let tema = "claro";
+
+      function AlterarTema() {
+        if (tema === "claro") {
+          tema = "escuro";
+
+          document.getElementById("container").style.backgroundColor = "black";
+          document.getElementById("container").style.color = "white";
+
+          document.getElementById("texto").innerHTML = "Estamos no modo escuro";
+
+          document.getElementById("icon_tema").src = "/img/sol.png";
+        } else {
+          tema = "claro";
+
+          document.getElementById("container").style.backgroundColor = "white";
+          document.getElementById("container").style.color = "black";
+
+          document.getElementById("texto").innerHTML = "Estamos no modo claro";
+
+          document.getElementById("icon_tema").src = "/img/moon.png";
+        }
+      }
+    </script>
+  </body>
+</html>

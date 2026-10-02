@@ -1,0 +1,41 @@
+:root {
+  --primary-blue: #007bff;
+  --purple-accent: #6b21a8;
+  --gradient-bg: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
+  --gradient-btn: linear-gradient(90deg, #00d2ff 0%, #6b21a8 100%);
+  --text-color: #2b2b2b;
+  --font-main: 'Poppins', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-main);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+/* Exemplo de estilização do botão estilo degradê */
+.btn-cta, .btn-primary {
+  background: var(--gradient-btn);
+  color: #fff;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+}
+
+/* Ajustes de layout com Flexbox/Grid */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
